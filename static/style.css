@@ -1,0 +1,118 @@
+
+html, body {
+margin: 0px;
+padding: 0px;
+}
+
+.m{
+  text-align: center;
+  color: white;
+  padding-top: 11px;
+  padding-bottom: 200px;
+}
+
+main{
+  height: 500px;
+
+}
+footer{
+height: 100px;
+}
+.l{
+  margin-top: 30px;
+}
+.fa{
+  padding-left: 850px;
+  padding-top: 150px;
+}
+body {
+  background-image: url("fon.jpg");
+}
+body {
+  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+  color: #BA55D3;
+
+}
+
+
+.form{
+  color: white;
+}
+.zag{
+  padding-left: 800px;
+  margin-bottom: 500px;
+}
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+}
+
+header {
+
+  background-color: #FFEB3B;
+}
+
+header a {
+  float: left;
+  color: #212121;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+header a:hover {
+  background-color: #FBC02D;
+  color: #212121;
+}
+
+header a.active {
+  background-color: #FBC02D;
+
+}
+
+nav {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  nav {
+    float: none;
+  }
+}
+table {
+margin-left: 500px;
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #AFCDE7;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #D8E6F3;
+}
+th:first-child, td:first-child {
+text-align: left;
+}
