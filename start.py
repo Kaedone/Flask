@@ -7,18 +7,20 @@ from google.auth.transport.requests import Request
 import json
 
 
-# If modifying these scopes, delete the file token.pickle.
+# При изменении этих областей удалите файл token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-# The ID and range of a sample spreadsheet.
+# Идентификатор и диапазон образца электронной таблицы.
 SAMPLE_SPREADSHEET_ID = '1AwBuzkjz76_TCnVCKJMq8UL-ObRBC6m8BI3-NXeKiNI'
-SAMPLE_RANGE_NAME = 'Test!B2:C'
 
-def get_table():
+
+def get_table(idd):
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
+    SAMPLE_RANGE_NAME='Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1]
     creds = None
+    print('Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1])
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
@@ -38,7 +40,6 @@ def get_table():
             pickle.dump(creds, token)
 
     service = build('sheets', 'v4', credentials=creds)
-    print('service: ' + str(service))
     # Call the Sheets API
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
@@ -51,4 +52,8 @@ def get_table():
     return values
 
 if __name__ == '__main__':
-    main()
+	data=int(0)
+	main()
+	with open("data_file.json", "r") as read_file:
+		data = json.load(read_file)
+	get_table(data)
