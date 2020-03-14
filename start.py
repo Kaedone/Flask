@@ -4,6 +4,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+import json
 
 
 # If modifying these scopes, delete the file token.pickle.
@@ -11,7 +12,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1AwBuzkjz76_TCnVCKJMq8UL-ObRBC6m8BI3-NXeKiNI'
-SAMPLE_RANGE_NAME = 'Test!B2:CP'
+SAMPLE_RANGE_NAME = 'Test!B2:C'
 
 def get_table():
     """Shows basic usage of the Sheets API.
@@ -43,7 +44,10 @@ def get_table():
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=SAMPLE_RANGE_NAME).execute()
     values = result.get('values', [])
-    print('values: ' + str(values))
+    
+    for x in range(len(values)):
+    	pass
+
     return values
 
 if __name__ == '__main__':
