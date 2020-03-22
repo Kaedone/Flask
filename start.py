@@ -18,19 +18,17 @@ SAMPLE_SPREADSHEET_ID = '1AwBuzkjz76_TCnVCKJMq8UL-ObRBC6m8BI3-NXeKiNI'
 
 
 def get_table(idd):
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
+    
     SAMPLE_RANGE_NAME='Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1]
     creds = None
     print('Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1])
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
+    # Файл token.pickle хранит токены доступа пользователя и обновления и
+    # создается автоматически при завершении потока авторизации для первого
+    # раза
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
+    # Если нет (действительных) данных, пусть вход пользователя в систему.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
