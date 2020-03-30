@@ -54,7 +54,7 @@ def get_table(idd):
 
 if __name__ == '__main__':
 	data=int(0)
-	main()
+	
 	with open("data_file.json", "r") as read_file:
 		data = json.load(read_file)
 	get_table(data)
