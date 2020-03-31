@@ -19,7 +19,8 @@ SAMPLE_SPREADSHEET_ID = '1AwBuzkjz76_TCnVCKJMq8UL-ObRBC6m8BI3-NXeKiNI'
 
 def get_table(idd):
     
-    SAMPLE_RANGE_NAME='Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1]
+    table_num=idd.split('=')[1]
+    SAMPLE_RANGE_NAME='Test!B'+table_num+':CP'+table_num
     creds = None
     print('Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1])
     # Файл token.pickle хранит токены доступа пользователя и обновления и
