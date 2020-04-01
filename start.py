@@ -52,7 +52,7 @@ def get_teachers():
 
     sort = {
         'id': values[0],
-        'teacherName': [1]
+        'teacherName': values[1]
     }
 
     return sort
