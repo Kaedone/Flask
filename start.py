@@ -34,12 +34,12 @@ def get_table(idd):
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
-        # Сохранение учетныч данныч для следующего запуска
+        # Сохранить учетные данные для следующего запуска
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
     service = build('sheets', 'v4', credentials=creds)
-    # Назвать таблиц с API
+    # Вызов листов с API
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=SAMPLE_RANGE_NAME).execute()
