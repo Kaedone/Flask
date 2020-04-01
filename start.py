@@ -9,7 +9,6 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import json
 
-
 # При изменении этих областей удалите файл token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
@@ -18,17 +17,16 @@ SAMPLE_SPREADSHEET_ID = '1AwBuzkjz76_TCnVCKJMq8UL-ObRBC6m8BI3-NXeKiNI'
 
 
 def get_table(idd):
-    
-    SAMPLE_RANGE_NAME='Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1]
+    SAMPLE_RANGE_NAME = 'Test!B' + str(idd) + ':CP' + str(idd)
     creds = None
-    print('Test!B'+idd.split(sep='=')[1]+':CP'+idd.split(sep='=')[1])
+    print('Test!B' + str(idd) + ':CP' + str(idd))
     # Файл token.pickle хранит токены доступа пользователя и обновления и
-    # создается автоматически при завершении потока авторизации для первого
-    # раза
+    # создается автоматически при завершении потока авторизации для первого раза
+
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-    # Если нет (действительных) данных, пусть вход пользователя в систему.
+    # Если нет (действительных) данных, то вход пользователя в систему.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -36,25 +34,26 @@ def get_table(idd):
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
-        # Save the credentials for the next run
+        # Сохранение учетныч данныч для следующего запуска
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
     service = build('sheets', 'v4', credentials=creds)
-    # Call the Sheets API
+    # Назвать таблиц с API
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=SAMPLE_RANGE_NAME).execute()
     values = result.get('values', [])
-    
+
     for x in range(len(values)):
-    	pass
+        pass
 
     return values
 
+
 if __name__ == '__main__':
-	data=int(0)
-	main()
-	with open("data_file.json", "r") as read_file:
-		data = json.load(read_file)
-	get_table(data)
+    data = int(0)
+
+    with open("data_file.json", "r") as read_file:
+        data = json.load(read_file)
+    get_table(data)
