@@ -63,18 +63,18 @@ def get_schedule(teacher_id):
                                 range=range_teachers_id_name).execute()
     values = result.get('values', [])
 
-    result = {
-        'teacherID': values[0],
-        'teacherName': values[1],
-        'subject': values[3],
-        'monday': values[4 - 20],
-        'tuesday': values[20 - 40],
-        'wednesday': values[40 - 58],
-        'thursday': values[58 - 76],
-        'friday': values[76 - 95]
-    }
-
-    return result
+    # result = {
+    #   'teacherID': values[0],
+    #  'teacherName': values[1],
+    # 'subject': values[3],
+    # 'monday': values[4 - 20],
+    # 'tuesday': values[20 - 40],
+    # 'wednesday': values[40 - 58],
+    # 'thursday': values[58 - 76],
+    # 'friday': values[76 - 95]
+    # }
+    ret = json.dumps(values, sort_keys=True, indent=4)
+    return ret
 
 
 # Обрабатываем запрос из клиента
