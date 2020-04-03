@@ -39,7 +39,7 @@ sheet = service.spreadsheets()
 # Получаем список всех учителей
 def get_teachers():
     # Обратите внимание! Test-название листа в таблице !-разделитель B4:C49-диапазон
-    range_teachers_id_name = 'Test!B4:C49'
+    range_teachers_id_name = 'Test!B4:D49'
 
     # Создаём массив с результатами
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
