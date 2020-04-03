@@ -39,7 +39,7 @@ sheet = service.spreadsheets()
 # Получаем список всех учителей
 def get_teachers():
     # Обратите внимание! Test-название листа в таблице !-разделитель B4:C49-диапазон
-    range_teachers_id_name = 'Test!B4:C49'
+    range_teachers_id_name = 'Test!B4:D49'
 
     # Создаём массив с результатами
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
@@ -53,6 +53,8 @@ def get_teachers():
 
 # Получаем рассписание для отдельного учителя
 def get_schedule(teacher_id):
+    if teacher_id < 0 or teacher_id > 46:
+        return None
     teacher_id += 3
     teacher_id = str(teacher_id)
     range_teachers_id_name = 'Test!B{0}:CP{0}'.format(teacher_id)

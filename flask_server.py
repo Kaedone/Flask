@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/schedule/<schedule_id>')
 def hello(schedule_id):
     return get_schedule(int(schedule_id))
-
+    
 
 # Получение всех учителей и их id
 @app.route('/all_teachers')
