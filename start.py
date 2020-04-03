@@ -64,18 +64,31 @@ def get_schedule(teacher_id):
     values = result.get('values', [])
 
     res = {
-           "teacherID": values[0][1],
-           "teacherName": values[0][2],
-           "subject": values[0][3],
-           "monday": values[0][4:20],
-           "tuesday": values[0][20:40],
-           "wednesday": values[0][40:58],
-           "thursday": values[0][58:76],
-           "friday": values[0][76:95]
-           }
+        "teacherID": values[0][1],
+        "teacherName": values[0][2],
+        "subject": values[0][3],
+        "monday": values[0][4:20],
+        "tuesday": values[0][20:40],
+        "wednesday": values[0][40:58],
+        "thursday": values[0][58:76],
+        "friday": values[0][76:95]
+    }
     y = json.dumps(res)
 
     return y
+
+
+def timing():
+    time_of_lessons = 'Test!E2:T2'
+
+    # Создаём массив с результатами
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=time_of_lessons).execute()
+    values = result.get('values', [])
+
+    sort = json.dumps(values, sort_keys=True, indent=4)
+
+    return sort
 
 
 # Обрабатываем запрос из клиента
