@@ -79,7 +79,7 @@ def get_schedule(teacher_id):
 
 
 def timing():
-    time_of_lessons = 'Test!E2:T2'
+    time_of_lessons = 'Test!U2:AN2'
 
     # Создаём массив с результатами
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
