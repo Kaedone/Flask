@@ -64,14 +64,14 @@ def get_schedule(teacher_id):
     values = result.get('values', [])
 
     res = {
-        "teacherID": values[0][1],
-        "teacherName": values[0][2],
-        "subject": values[0][3],
-        "monday": values[0][4:20],
-        "tuesday": values[0][20:40],
-        "wednesday": values[0][40:58],
-        "thursday": values[0][58:76],
-        "friday": values[0][76:95]
+        "teacherID": values[0][0],
+        "teacherName": values[0][1],
+        "subject": values[0][2],
+        "monday": values[0][3:19],
+        "tuesday": values[0][19:39],
+        "wednesday": values[0][39:57],
+        "thursday": values[0][57:75],
+        "friday": values[0][75:91]
     }
     y = json.dumps(res)
 
