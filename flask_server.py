@@ -5,7 +5,7 @@
 from flask import Flask
 
 #  Подключпем сам файл с запросами и другим кодом
-from start import get_teachers, get_schedule, timing
+from start import get_teachers, get_schedule, timing, schedule
 
 app = Flask(__name__)
 
@@ -22,9 +22,16 @@ def teacher_handler():
     return get_teachers()
 
 
+# Получение времени звонков
 @app.route('/get_time')
 def time():
     return timing()
+
+
+# Получение информации для реализации квиза
+@app.route('/quiz')
+def quiz():
+    return schedule()
 
 
 # Настройка портов и хоста
