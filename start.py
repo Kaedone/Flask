@@ -94,9 +94,36 @@ def timing():
                                 range=time_of_lessons).execute()
     values = result.get('values', [])
 
+    sort = {
+
+    }
+
     # Генерим крассивый .json
     sort = json.dumps(values, sort_keys=True, indent=4)
 
+    return sort
+
+
+def schedule():
+    block = []
+    days = []
+    alf = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+           'V',
+           'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO',
+           'AP', 'AQ', 'AR', 'AS', 'AT']
+
+    time_of_lessons = 'school!C7:AT41'
+    # Создаём массив с результатами
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=time_of_lessons).execute()
+    values = result.get('values', [])
+
+    for f in range(7, 42, 7):
+        for i in range(3, 46, 2):
+            block = values[i:f]
+            days.append(block)
+    # Генерим крассивый .json
+    sort = json.dumps(days, sort_keys=True, indent=4)
     return sort
 
 
